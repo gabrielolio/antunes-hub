@@ -3,296 +3,388 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PRD — Produto de Entrega | Antunes Nogueira</title>
-  <link rel="stylesheet" href="style.css">
+  <title>PRD — Produto de Entrega | Barbearia Antunes Nogueira</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #ffffff;
+      color: #1a1a1a;
+      line-height: 1.6;
+    }
+    header {
+      background: #00291b;
+      padding: 1rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    header img {
+      max-height: 50px;
+      width: auto;
+    }
+    header nav a {
+      color: #c3a76c;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: opacity 0.2s;
+    }
+    header nav a:hover {
+      opacity: 0.8;
+    }
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+    h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #00291b;
+      margin-bottom: 0.25rem;
+    }
+    .subtitle {
+      color: #666;
+      font-size: 0.95rem;
+      margin-bottom: 2.5rem;
+    }
+    h2 {
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: #00291b;
+      margin-top: 2.5rem;
+      margin-bottom: 1rem;
+      padding-left: 0.75rem;
+      border-left: 4px solid #c3a76c;
+    }
+    h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #333;
+      margin-top: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+    p {
+      margin-bottom: 1rem;
+    }
+    strong {
+      font-weight: 600;
+    }
+    .table-wrapper {
+      overflow-x: auto;
+      margin: 1rem 0 1.5rem;
+      border-radius: 8px;
+      border: 1px solid #e5e5e5;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+    thead {
+      background: #00291b;
+      color: #ffffff;
+    }
+    th {
+      padding: 0.75rem 1rem;
+      text-align: left;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    td {
+      padding: 0.65rem 1rem;
+      border-bottom: 1px solid #eee;
+    }
+    tbody tr:last-child td {
+      border-bottom: none;
+    }
+    tbody tr:nth-child(even) {
+      background: #f9f9f9;
+    }
+    .scope-section {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      margin: 1rem 0;
+    }
+    @media (min-width: 600px) {
+      .scope-section {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    .scope-box {
+      border-radius: 8px;
+      padding: 1.25rem;
+      border: 1px solid #e5e5e5;
+    }
+    .scope-box.dentro {
+      background: #f0faf5;
+      border-color: #b2dfcc;
+    }
+    .scope-box.fora {
+      background: #fdf5f5;
+      border-color: #f0c4c4;
+    }
+    .scope-box h3 {
+      margin-top: 0;
+      margin-bottom: 0.75rem;
+    }
+    .scope-box ol, .scope-box ul {
+      padding-left: 1.25rem;
+    }
+    .scope-box li {
+      margin-bottom: 0.35rem;
+      font-size: 0.9rem;
+    }
+    .epics-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+    @media (min-width: 500px) {
+      .epics-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    .epic-card {
+      background: #fdfcf9;
+      border: 1px solid #e5dcc8;
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
+    .epic-badge {
+      background: #c3a76c;
+      color: #ffffff;
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .epic-badge.p1 {
+      background: #7a9b6d;
+    }
+    .epic-badge.p2 {
+      background: #8b7355;
+    }
+    .epic-card span {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: #333;
+    }
+    .highlight-box {
+      background: #fdfcf9;
+      border-left: 4px solid #c3a76c;
+      padding: 1rem 1.25rem;
+      border-radius: 0 8px 8px 0;
+      margin: 1rem 0;
+    }
+    footer {
+      text-align: center;
+      padding: 2rem 1.5rem;
+      background: #00291b;
+      color: #a0a0a0;
+      font-size: 0.85rem;
+    }
+  </style>
 </head>
 <body>
-  <div class="container">
-    <header class="page-header">
-      <a href="index.html" class="back-link">← Voltar ao hub</a>
-      <h1>PRD — Produto de Entrega</h1>
-      <p class="subtitle">Draft para validação · Revisado em 2026-06-10</p>
-    </header>
+  <header>
+    <img src="../brand/ANTUNES NOGUEIRA/LOGO/PNG/ANTUNES-NOGUEIRA_COMPLETA-1.png" alt="Antunes Nogueira Logo">
+    <nav><a href="index.html">&larr; Voltar ao Hub</a></nav>
+  </header>
 
-    <div class="page-content">
+  <main>
+    <h1>PRD &mdash; Produto de Entrega</h1>
+    <p class="subtitle">Draft para valida&ccedil;&atilde;o | &Uacute;ltima revis&atilde;o: 2026-06-10</p>
 
-      <h2>1. Contexto e Objetivo</h2>
-
-      <h3>Problema central</h3>
-      <p>O dono está preso no operacional, atua como principal mão de obra e centraliza controle, agenda, relacionamento, financeiro e posicionamento. Isso limita a capacidade de atender mais clientes, construir autoridade nas redes, fortalecer a marca e abrir caminhos futuros para workshops, eventos e escola de barbearia clássica.</p>
-
-      <h3>Objetivo dos próximos 90 dias</h3>
-      <p>Criar uma base operacional e comercial que reduza a dependência do dono, profissionalize o atendimento, aumente a captação de clientes novos, fortaleça a imagem da marca e entregue um <strong>MVP funcional</strong> de controle para agenda, clientes, financeiro, estoque e comissão.</p>
-
-      <h3>Entrega de maior impacto</h3>
-      <p>Atendimento automatizado com agendamento, comunicação padronizada e separação entre a imagem da barbearia e a imagem pessoal do dono.</p>
-
-      <h2>2. Prioridades</h2>
-
-      <h3>P0 — Obrigatório para o MVP</h3>
-      <div class="table-wrapper">
-        <table>
-          <thead><tr><th>Área</th><th>Prioridade</th></tr></thead>
-          <tbody>
-            <tr><td>Direção</td><td>Reduzir dependência do dono e profissionalizar atendimento</td></tr>
-            <tr><td>Atendimento</td><td>WhatsApp automatizado com padrão profissional</td></tr>
-            <tr><td>Agenda</td><td>Agendamento estruturado por cliente, serviço, barbeiro, dia/hora e pagamento</td></tr>
-            <tr><td>Cliente</td><td>Cadastro mínimo e acompanhamento de retorno</td></tr>
-            <tr><td>Arthur</td><td>Aumentar visibilidade, recorrência e capacidade</td></tr>
-            <tr><td>Financeiro</td><td>Controle de faturamento, taxas, líquido e comissão</td></tr>
-            <tr><td>Google</td><td>Padronizar presença, serviços, fotos e rotina de avaliações</td></tr>
-            <tr><td>Posicionamento</td><td>Barbearia clássica premium de Campo Grande/MS</td></tr>
-            <tr><td>Serviços</td><td>Catálogo de serviços, combos, produtos e café</td></tr>
-            <tr><td>Conteúdo</td><td>Rotina semanal que não dependa do ânimo do dono</td></tr>
-            <tr><td>Sistema</td><td>MVP com agenda, cliente, fechamento e comissão</td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <h3>P1 — Primeira versão evoluída</h3>
-      <div class="table-wrapper">
-        <table>
-          <thead><tr><th>Área</th><th>Prioridade</th></tr></thead>
-          <tbody>
-            <tr><td>Governança</td><td>Decisões sob controle do dono, autonomia clara para Arthur</td></tr>
-            <tr><td>Agenda</td><td>Confirmação, remarcação, encaixe e permissão de clientes</td></tr>
-            <tr><td>Financeiro</td><td>Mix de pagamento, custos fixos/variáveis e relatórios semanais</td></tr>
-            <tr><td>WhatsApp</td><td>Número novo, responsáveis, horários e scripts</td></tr>
-            <tr><td>Experiência</td><td>Ritual de atendimento, mimos e padrão Arthur</td></tr>
-            <tr><td>Produto</td><td>Inventário, margem, script de recomendação e café</td></tr>
-            <tr><td>Conteúdo</td><td>Pilares, provas sociais e campanhas em horários fracos</td></tr>
-            <tr><td>Acesso</td><td>Matriz de permissão para clientes, financeiro, comissão e estoque</td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <h2>3. Usuários e Papéis</h2>
-      <div class="table-wrapper">
-        <table>
-          <thead><tr><th>Usuário</th><th>Papel</th><th>Necessidade</th></tr></thead>
-          <tbody>
-            <tr><td>Otávio (dono)</td><td>Aprovador e decisor central</td><td>Manter controle financeiro, café, carteira pessoal e marca</td></tr>
-            <tr><td>Arthur</td><td>Barbeiro em crescimento</td><td>Ganhar clientes, recorrência, autonomia de conteúdo</td></tr>
-            <tr><td>Cliente recorrente</td><td>Base de receita</td><td>Atendimento consistente, retorno fácil, experiência premium</td></tr>
-            <tr><td>Cliente novo</td><td>Fonte de crescimento</td><td>Encontrar a barbearia, entender valor e agendar sem fricção</td></tr>
-            <tr><td>Consultoria</td><td>Implantação e estratégia</td><td>Diagnosticar, priorizar, criar processos</td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <h2>4. Escopo do MVP</h2>
-
-      <h3>Dentro do escopo</h3>
-      <ol>
-        <li>Atendimento automatizado ou semi-automatizado no WhatsApp</li>
-        <li>Agenda estruturada e automatizada</li>
-        <li>Cadastro e consulta de clientes</li>
-        <li>Registro de origem do cliente</li>
-        <li>Controle de retorno e reativação</li>
-        <li>Fechamento financeiro</li>
-        <li>Cálculo de taxa de maquininha e comissão do Arthur</li>
-        <li>Controle básico de estoque/produtos</li>
-        <li>Google Perfil com serviços, fotos e rotina de avaliação</li>
-        <li>Scripts de comunicação padronizados</li>
-        <li>Cronograma de conteúdo</li>
-        <li>Posicionamento clássico premium</li>
-        <li>Relatórios semanais básicos</li>
-      </ol>
-
-      <h3>Fora do escopo inicial</h3>
-      <ul>
-        <li>Sistema completo além do MVP</li>
-        <li>Parte educacional/escola como produto principal</li>
-        <li>Foco grande no café antes da base operacional</li>
-        <li>Clube, assinatura ou pacote complexo</li>
-        <li>Integrações futuras (Google Agenda, Infinity Pay, Gmail)</li>
-        <li>Ofertas que vendam preço ou desvalorizem o ofício</li>
-      </ul>
-
-      <h2>5. Requisitos Funcionais — P0</h2>
-      <div class="table-wrapper">
-        <table>
-          <thead><tr><th>ID</th><th>Requisito</th></tr></thead>
-          <tbody>
-            <tr><td>FR-P0-001</td><td>Atendimento inicial padronizado via WhatsApp com boas-vindas, coleta de interesse e direcionamento para agendamento</td></tr>
-            <tr><td>FR-P0-002</td><td>Criar agendamentos com dia, hora, barbeiro, serviço, forma de pagamento, status e observações</td></tr>
-            <tr><td>FR-P0-003</td><td>Cadastrar clientes com nome, nascimento, telefone e endereço</td></tr>
-            <tr><td>FR-P0-004</td><td>Consultar histórico mínimo: atendimentos, barbeiro, serviços, produtos e retorno esperado</td></tr>
-            <tr><td>FR-P0-005</td><td>Registrar origem do cliente: Google, indicação, porta, Instagram ou outro</td></tr>
-            <tr><td>FR-P0-006</td><td>Registrar atendimento com valor bruto, pagamento, taxa, líquido, barbeiro e comissão</td></tr>
-            <tr><td>FR-P0-007</td><td>Calcular comissão sobre valor líquido após taxa de maquininha</td></tr>
-            <tr><td>FR-P0-008</td><td>Aplicar regra: Arthur 60% (clientes dele/porta) e 50% (repassados)</td></tr>
-            <tr><td>FR-P0-009</td><td>Controle financeiro com entrada, saída, custo fixo, insumos, imposto, taxa e comissão</td></tr>
-            <tr><td>FR-P0-010</td><td>Registrar produtos/insumos em estoque</td></tr>
-            <tr><td>FR-P0-011</td><td>Checklist de Google Perfil completo</td></tr>
-            <tr><td>FR-P0-012</td><td>Script de pedido de avaliação no Google</td></tr>
-            <tr><td>FR-P0-013</td><td>Cronograma de conteúdo semanal</td></tr>
-            <tr><td>FR-P0-014</td><td>Plano de recorrência do Arthur</td></tr>
-            <tr><td>FR-P0-015</td><td>Visão mínima de negócio: situação, gargalos e próximos passos</td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <h2>6. Requisitos Funcionais — P1</h2>
-      <div class="table-wrapper">
-        <table>
-          <thead><tr><th>ID</th><th>Requisito</th></tr></thead>
-          <tbody>
-            <tr><td>FR-P1-001</td><td>Mensagens padrão: boas-vindas, agendamento, avaliação, folga, datas comemorativas</td></tr>
-            <tr><td>FR-P1-002</td><td>Confirmação, cancelamento, encaixe e remarcação</td></tr>
-            <tr><td>FR-P1-003</td><td>Diferenciar clientes exclusivos do Otávio, Arthur e compartilhados</td></tr>
-            <tr><td>FR-P1-004</td><td>Controle de permissão por perfil</td></tr>
-            <tr><td>FR-P1-005</td><td>Relatórios semanais de comissão, entrada/saída, estoque</td></tr>
-            <tr><td>FR-P1-006</td><td>Documentar custos fixos e variáveis</td></tr>
-            <tr><td>FR-P1-007</td><td>Inventário com preço, margem e giro</td></tr>
-            <tr><td>FR-P1-008</td><td>Script de recomendação de cosméticos e café</td></tr>
-            <tr><td>FR-P1-009</td><td>Ritual de atendimento premium documentado</td></tr>
-            <tr><td>FR-P1-010</td><td>Pilares de conteúdo pós-pesquisa de mercado</td></tr>
-            <tr><td>FR-P1-011</td><td>Campanhas para horários fracos (terças, 14h-15h)</td></tr>
-            <tr><td>FR-P1-012</td><td>Aprovação do Otávio para mudanças de processo/preço/oferta</td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <h2>7. Dados e Regras de Negócio</h2>
-
-      <h3>Baselines</h3>
-      <div class="table-wrapper">
-        <table>
-          <thead><tr><th>Indicador</th><th>Valor</th></tr></thead>
-          <tbody>
-            <tr><td>Faturamento mensal médio</td><td>R$ 7.500 a R$ 8.000</td></tr>
-            <tr><td>Meta mensal em 90 dias</td><td>R$ 10.000 a R$ 15.000</td></tr>
-            <tr><td>Clientes novos por semana</td><td>1 a 3</td></tr>
-            <tr><td>Média diária Otávio</td><td>6 a 10 atendimentos</td></tr>
-            <tr><td>Média diária Arthur</td><td>1 a 4 atendimentos</td></tr>
-            <tr><td>Capacidade máxima Otávio</td><td>12 a 15 clientes/dia</td></tr>
-            <tr><td>Capacidade máxima Arthur</td><td>10 clientes/dia</td></tr>
-            <tr><td>Duração média por cliente</td><td>30 a 45 minutos</td></tr>
-            <tr><td>Horário parado</td><td>14h-15h30; terças quase livres</td></tr>
-            <tr><td>Funcionamento</td><td>Terça a sábado, 09h às 19h</td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <h3>Pagamentos e taxas</h3>
-      <div class="table-wrapper">
-        <table>
-          <thead><tr><th>Modalidade</th><th>Participação</th><th>Taxa</th></tr></thead>
-          <tbody>
-            <tr><td>Pix</td><td>30%</td><td>0%</td></tr>
-            <tr><td>Débito</td><td>30%</td><td>1,6%</td></tr>
-            <tr><td>Crédito</td><td>40%</td><td>5%</td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <h3>Comissão</h3>
-      <div class="table-wrapper">
-        <table>
-          <thead><tr><th>Profissional</th><th>Regra</th></tr></thead>
-          <tbody>
-            <tr><td>Otávio</td><td>Valor integral</td></tr>
-            <tr><td>Arthur — cliente dele</td><td>60% sobre líquido</td></tr>
-            <tr><td>Arthur — cliente de porta</td><td>60% sobre líquido</td></tr>
-            <tr><td>Arthur — cliente repassado</td><td>50% sobre líquido</td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <h2>8. Catálogo de Serviços e Produtos</h2>
-
-      <h3>Serviços</h3>
-      <div class="table-wrapper">
-        <table>
-          <thead><tr><th>Item</th><th>Preço</th></tr></thead>
-          <tbody>
-            <tr><td>Cabelo</td><td>R$ 60</td></tr>
-            <tr><td>Barba</td><td>TBD</td></tr>
-            <tr><td>Cera de ouvido</td><td>TBD</td></tr>
-            <tr><td>Cera de nariz</td><td>TBD</td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <h3>Produtos</h3>
-      <div class="table-wrapper">
-        <table>
-          <thead><tr><th>Produto</th><th>Preço</th></tr></thead>
-          <tbody>
-            <tr><td>Pomadas</td><td>R$ 130</td></tr>
-            <tr><td>Loção pós-barba</td><td>R$ 120</td></tr>
-            <tr><td>Loção pós-barba importada</td><td>R$ 150</td></tr>
-            <tr><td>Grooming</td><td>R$ 150</td></tr>
-            <tr><td>Pomada em pó</td><td>R$ 90</td></tr>
-            <tr><td>Shampoo anti-resíduo</td><td>R$ 85</td></tr>
-            <tr><td>Óleo para barba</td><td>R$ 120</td></tr>
-            <tr><td>Balm</td><td>R$ 100</td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <h2>9. Épicos Propostos</h2>
-      <div class="table-wrapper">
-        <table>
-          <thead><tr><th>Epic</th><th>Objetivo</th><th>Prioridade</th></tr></thead>
-          <tbody>
-            <tr><td>Epic 1 — Atendimento, WhatsApp e agendamento</td><td>Atendimento padronizado, número comercial, agenda automatizada</td><td>P0</td></tr>
-            <tr><td>Epic 2 — Cadastro, CRM e recorrência</td><td>Registrar clientes, histórico, origem e retorno</td><td>P0</td></tr>
-            <tr><td>Epic 3 — Financeiro, taxas, comissão e estoque</td><td>Fechamento, líquido, comissão, custos e produtos</td><td>P0</td></tr>
-            <tr><td>Epic 4 — Google, captação local e prova social</td><td>Presença local, avaliações, fotos, serviços</td><td>P0/P1</td></tr>
-            <tr><td>Epic 5 — Posicionamento, conteúdo e experiência</td><td>Desvincular marca do dono, rotina de conteúdo</td><td>P1</td></tr>
-            <tr><td>Epic 6 — Café, produtos e ofertas futuras</td><td>Organizar produtos e café como ecossistema de valor</td><td>P1/P2</td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <h2>10. Métricas de Sucesso</h2>
-      <div class="table-wrapper">
-        <table>
-          <thead><tr><th>Horizonte</th><th>Sucesso esperado</th></tr></thead>
-          <tbody>
-            <tr><td>30 dias</td><td>WhatsApp automatizado, agenda automatizada, MVP entregue, posicionamento melhorado e cronograma claro de conteúdo</td></tr>
-            <tr><td>90 dias</td><td>Metas de clientes e faturamento em evolução, sistema integrado funcional, café posicionado e conteúdo educativo em maturação</td></tr>
-            <tr><td>6 meses</td><td>Mais clientes novos, menor dependência do dono, mais controle financeiro, autoridade regional, café com demanda ativa, workshops/eventos e carteira do Arthur dobrada</td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <h2>11. Posicionamento</h2>
-      <blockquote>"A verdadeira Barbearia Clássica de Campo Grande/MS."</blockquote>
-      <h4>Diferenciais percebidos</h4>
-      <ul>
-        <li>Conforto</li>
-        <li>Acolhimento</li>
-        <li>Atenção de verdade</li>
-        <li>Respeito sincero</li>
-        <li>Mão de obra qualificada</li>
-        <li>Ambiente e bom gosto</li>
-      </ul>
-
-      <h2>12. Perguntas em Aberto (TBD)</h2>
-      <div class="table-wrapper">
-        <table>
-          <thead><tr><th>ID</th><th>Pergunta</th><th>Prioridade</th></tr></thead>
-          <tbody>
-            <tr><td>TBD-001</td><td>Confirmar se a visão de 6 meses está aprovada pelo Otávio</td><td>P0</td></tr>
-            <tr><td>TBD-002</td><td>Definir limite operacional seguro (evitar sobrecarga)</td><td>P0</td></tr>
-            <tr><td>TBD-004</td><td>Validar hipótese real de por que cliente novo não retorna</td><td>P0</td></tr>
-            <tr><td>TBD-005</td><td>Confirmar capacidade máxima diária sem perder qualidade</td><td>P0</td></tr>
-            <tr><td>TBD-006</td><td>Confirmar lista completa de serviços e preços</td><td>P0</td></tr>
-            <tr><td>TBD-008</td><td>Definir ritual de atendimento premium</td><td>P1</td></tr>
-            <tr><td>TBD-012</td><td>Definir estratégia operacional do café</td><td>P1</td></tr>
-            <tr><td>TBD-014</td><td>Definir stack/arquitetura do MVP do sistema</td><td>P1</td></tr>
-            <tr><td>TBD-015</td><td>Definir nível de automação do WhatsApp no MVP</td><td>P0</td></tr>
-          </tbody>
-        </table>
-      </div>
-
+    <h2>1. Contexto e Objetivo</h2>
+    <p><strong>Problema central:</strong> O dono est&aacute; preso no operacional, atua como principal m&atilde;o de obra e centraliza controle, agenda, relacionamento, financeiro e posicionamento. Isso limita a capacidade de atender mais clientes, construir autoridade e abrir caminhos futuros.</p>
+    <p><strong>Objetivo 90 dias:</strong> Criar base operacional e comercial que reduza a depend&ecirc;ncia do dono, profissionalize o atendimento, aumente capta&ccedil;&atilde;o e fortale&ccedil;a a marca.</p>
+    <div class="highlight-box">
+      <strong>Entrega de maior impacto:</strong> Atendimento automatizado com agendamento, comunica&ccedil;&atilde;o padronizada e separa&ccedil;&atilde;o entre imagem da barbearia e imagem pessoal do dono.
     </div>
-    <footer class="hub-footer">
-      <span>Barbearia Antunes Nogueira</span> · Central de Entregáveis · 2026
-    </footer>
-  </div>
+
+    <h2>2. Prioridades P0 &mdash; Obrigat&oacute;rio para MVP</h2>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr><th>&Aacute;rea</th><th>Prioridade</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Dire&ccedil;&atilde;o</td><td>Reduzir depend&ecirc;ncia do dono e profissionalizar atendimento</td></tr>
+          <tr><td>Atendimento</td><td>WhatsApp automatizado com padr&atilde;o profissional</td></tr>
+          <tr><td>Agenda</td><td>Agendamento por cliente, servi&ccedil;o, barbeiro, dia/hora e pagamento</td></tr>
+          <tr><td>Cliente</td><td>Cadastro m&iacute;nimo e acompanhamento de retorno</td></tr>
+          <tr><td>Arthur</td><td>Aumentar visibilidade, recorr&ecirc;ncia e capacidade pr&oacute;pria</td></tr>
+          <tr><td>Financeiro</td><td>Controle de faturamento, taxas, l&iacute;quido e comiss&atilde;o</td></tr>
+          <tr><td>Google</td><td>Presen&ccedil;a, servi&ccedil;os, fotos e rotina de avalia&ccedil;&otilde;es</td></tr>
+          <tr><td>Posicionamento</td><td>Barbearia cl&aacute;ssica premium de Campo Grande/MS</td></tr>
+          <tr><td>Servi&ccedil;os</td><td>Cat&aacute;logo inicial com combos, produtos e caf&eacute;</td></tr>
+          <tr><td>Conte&uacute;do</td><td>Rotina semanal independente do dono</td></tr>
+          <tr><td>Sistema</td><td>MVP com processos de entrada/sa&iacute;da, agenda, cliente, fechamento e comiss&atilde;o</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>3. Usu&aacute;rios e Pap&eacute;is</h2>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr><th>Usu&aacute;rio</th><th>Papel</th><th>Necessidade</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Ot&aacute;vio (dono)</td><td>Aprovador e decisor central</td><td>Controle financeiro, caf&eacute;, carteira pessoal e decis&otilde;es de marca</td></tr>
+          <tr><td>Arthur</td><td>Barbeiro em crescimento</td><td>Ganhar clientes, recorr&ecirc;ncia, autonomia de conte&uacute;do</td></tr>
+          <tr><td>Cliente recorrente</td><td>Base de receita</td><td>Atendimento consistente, retorno f&aacute;cil, experi&ecirc;ncia premium</td></tr>
+          <tr><td>Cliente novo</td><td>Fonte de crescimento</td><td>Encontrar, entender valor e agendar sem fric&ccedil;&atilde;o</td></tr>
+          <tr><td>Consultoria</td><td>Implanta&ccedil;&atilde;o</td><td>Diagnosticar, priorizar, criar processos</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>4. Escopo do MVP</h2>
+    <div class="scope-section">
+      <div class="scope-box dentro">
+        <h3>Dentro do Escopo</h3>
+        <ol>
+          <li>Atendimento automatizado no WhatsApp</li>
+          <li>Agenda estruturada e automatizada</li>
+          <li>Cadastro e consulta de clientes</li>
+          <li>Registro de origem do cliente</li>
+          <li>Controle de retorno e reativa&ccedil;&atilde;o</li>
+          <li>Fechamento financeiro</li>
+          <li>C&aacute;lculo de taxa e comiss&atilde;o do Arthur</li>
+          <li>Controle b&aacute;sico de estoque/produtos</li>
+          <li>Google Perfil completo</li>
+          <li>Scripts de comunica&ccedil;&atilde;o padronizados</li>
+          <li>Cronograma de conte&uacute;do</li>
+          <li>Posicionamento cl&aacute;ssico premium</li>
+          <li>Relat&oacute;rios semanais b&aacute;sicos</li>
+        </ol>
+      </div>
+      <div class="scope-box fora">
+        <h3>Fora do Escopo Inicial</h3>
+        <ol>
+          <li>Sistema completo al&eacute;m do MVP</li>
+          <li>Parte educacional/escola como produto principal</li>
+          <li>Foco grande no caf&eacute; antes da base operacional</li>
+          <li>Clube, assinatura ou pacote complexo</li>
+          <li>Integra&ccedil;&otilde;es futuras antes de validar MVP</li>
+          <li>Ofertas que vendam pre&ccedil;o ou desvalorizem o of&iacute;cio</li>
+        </ol>
+      </div>
+    </div>
+
+    <h2>5. Dados e Regras de Neg&oacute;cio</h2>
+    <h3>Baselines</h3>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr><th>Indicador</th><th>Valor</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Faturamento mensal m&eacute;dio</td><td>R$ 7.500 a R$ 8.000</td></tr>
+          <tr><td>Meta mensal em 90 dias</td><td>R$ 10.000 a R$ 15.000</td></tr>
+          <tr><td>Clientes novos por semana</td><td>1 a 3</td></tr>
+          <tr><td>M&eacute;dia di&aacute;ria Ot&aacute;vio</td><td>6 a 10 atendimentos</td></tr>
+          <tr><td>M&eacute;dia di&aacute;ria Arthur</td><td>1 a 4 atendimentos</td></tr>
+          <tr><td>Capacidade m&aacute;xima Ot&aacute;vio</td><td>12 a 15 clientes/dia</td></tr>
+          <tr><td>Funcionamento</td><td>Ter&ccedil;a a s&aacute;bado, 09h &agrave;s 19h</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Pagamentos e Taxas</h3>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr><th>Modalidade</th><th>Participa&ccedil;&atilde;o</th><th>Taxa</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Pix</td><td>30%</td><td>0%</td></tr>
+          <tr><td>D&eacute;bito</td><td>30%</td><td>1,6%</td></tr>
+          <tr><td>Cr&eacute;dito</td><td>40%</td><td>5%</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Comiss&atilde;o</h3>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr><th>Profissional</th><th>Regra</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Ot&aacute;vio</td><td>Valor integral</td></tr>
+          <tr><td>Arthur &mdash; cliente dele</td><td>60% sobre l&iacute;quido</td></tr>
+          <tr><td>Arthur &mdash; cliente de porta</td><td>60% sobre l&iacute;quido</td></tr>
+          <tr><td>Arthur &mdash; cliente repassado</td><td>50% sobre l&iacute;quido</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>6. &Eacute;picos Propostos</h2>
+    <div class="epics-grid">
+      <div class="epic-card">
+        <span class="epic-badge">P0</span>
+        <span><strong>Epic 1</strong> &mdash; Atendimento, WhatsApp e agendamento</span>
+      </div>
+      <div class="epic-card">
+        <span class="epic-badge">P0</span>
+        <span><strong>Epic 2</strong> &mdash; Cadastro, CRM e recorr&ecirc;ncia</span>
+      </div>
+      <div class="epic-card">
+        <span class="epic-badge">P0</span>
+        <span><strong>Epic 3</strong> &mdash; Financeiro, taxas, comiss&atilde;o e estoque</span>
+      </div>
+      <div class="epic-card">
+        <span class="epic-badge p1">P0/P1</span>
+        <span><strong>Epic 4</strong> &mdash; Google, capta&ccedil;&atilde;o local e prova social</span>
+      </div>
+      <div class="epic-card">
+        <span class="epic-badge p1">P1</span>
+        <span><strong>Epic 5</strong> &mdash; Posicionamento, conte&uacute;do e experi&ecirc;ncia premium</span>
+      </div>
+      <div class="epic-card">
+        <span class="epic-badge p2">P1/P2</span>
+        <span><strong>Epic 6</strong> &mdash; Caf&eacute;, produtos e ofertas futuras</span>
+      </div>
+    </div>
+
+    <h2>7. M&eacute;tricas de Sucesso</h2>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr><th>Horizonte</th><th>Sucesso esperado</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>30 dias</td><td>WhatsApp automatizado, agenda automatizada, MVP entregue, cronograma de conte&uacute;do</td></tr>
+          <tr><td>90 dias</td><td>Metas de clientes/faturamento em evolu&ccedil;&atilde;o, sistema integrado, caf&eacute; posicionado, conte&uacute;do educativo em matura&ccedil;&atilde;o</td></tr>
+          <tr><td>6 meses</td><td>Mais clientes, menor depend&ecirc;ncia do dono, autoridade regional, workshops/eventos, carteira do Arthur dobrada</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+
+  <footer>
+    Consultoria Estrat&eacute;gica &mdash; Barbearia Antunes Nogueira &copy; 2026
+  </footer>
 </body>
 </html>

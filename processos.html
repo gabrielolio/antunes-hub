@@ -3,165 +3,429 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mapa de Processos | Antunes Nogueira</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Processos Operacionais | Antunes Nogueira</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #ffffff;
+      color: #1a1a1a;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    .site-header {
+      background: #00291b;
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .site-header img { max-height: 50px; width: auto; }
+    .site-header a.nav-link {
+      color: #c3a76c;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: opacity 0.2s;
+    }
+    .site-header a.nav-link:hover { opacity: 0.8; }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+    }
+    h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #00291b;
+      margin-bottom: 8px;
+    }
+    .subtitle {
+      font-size: 0.95rem;
+      color: #555;
+      margin-bottom: 40px;
+    }
+    .intro {
+      background: #f8f7f4;
+      border-left: 4px solid #c3a76c;
+      padding: 24px 28px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 48px;
+    }
+    .intro p { margin: 0; }
+    h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #00291b;
+      margin-top: 48px;
+      margin-bottom: 20px;
+      padding-left: 16px;
+      border-left: 4px solid #c3a76c;
+    }
+    .process-section {
+      background: #ffffff;
+      border: 1px solid #e8e5df;
+      border-radius: 8px;
+      padding: 28px;
+      margin-bottom: 32px;
+    }
+    .process-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+    .process-badge {
+      background: #c3a76c;
+      color: #00291b;
+      font-weight: 700;
+      font-size: 0.85rem;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .process-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #00291b;
+    }
+    .state-label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 10px;
+      padding: 4px 10px;
+      border-radius: 4px;
+      display: inline-block;
+    }
+    .state-atual { background: #fef3cd; color: #856404; }
+    .state-alvo { background: #d4edda; color: #155724; }
+    .state-block { margin-bottom: 20px; }
+    .state-block:last-child { margin-bottom: 0; }
+    ul { padding-left: 20px; margin-bottom: 12px; }
+    li { margin-bottom: 6px; font-size: 0.95rem; }
+    ol { padding-left: 20px; margin-bottom: 12px; }
+    ol li { margin-bottom: 6px; font-size: 0.95rem; }
+    .indicadores {
+      background: #f0f4f2;
+      border-radius: 6px;
+      padding: 12px 16px;
+      margin-top: 14px;
+      font-size: 0.9rem;
+    }
+    .indicadores strong { color: #00291b; }
+    .table-wrapper {
+      overflow-x: auto;
+      margin-top: 16px;
+      border-radius: 8px;
+      border: 1px solid #e8e5df;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+      min-width: 600px;
+    }
+    thead { background: #c3a76c; color: #00291b; }
+    th {
+      padding: 12px 14px;
+      text-align: left;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    td {
+      padding: 10px 14px;
+      border-top: 1px solid #e8e5df;
+      vertical-align: top;
+    }
+    tbody tr:hover { background: #f8f7f4; }
+    .footer {
+      text-align: center;
+      padding: 32px 24px;
+      font-size: 0.85rem;
+      color: #777;
+      border-top: 1px solid #e8e5df;
+      margin-top: 48px;
+    }
+    @media (max-width: 600px) {
+      .site-header { padding: 12px 16px; }
+      .site-header img { max-height: 38px; }
+      .container { padding: 32px 16px 60px; }
+      h1 { font-size: 1.6rem; }
+      .process-section { padding: 20px 16px; }
+      .intro { padding: 18px 20px; }
+    }
+  </style>
 </head>
 <body>
-  <div class="container">
-    <header class="page-header">
-      <a href="index.html" class="back-link">← Voltar ao hub</a>
-      <h1>Mapa de Processos Operacionais</h1>
-      <p class="subtitle">Revisado em 2026-06-09 · 6 processos mapeados</p>
-    </header>
+  <header class="site-header">
+    <img src="../brand/ANTUNES NOGUEIRA/LOGO/PNG/ANTUNES-NOGUEIRA_COMPLETA-1.png" alt="Antunes Nogueira Logo">
+    <a href="index.html" class="nav-link">&larr; Voltar ao Hub</a>
+  </header>
 
-    <div class="page-content">
+  <main class="container">
+    <h1>Processos Operacionais</h1>
+    <p class="subtitle">Mapa de Processos | Revisado em 2026-06-09</p>
 
-      <p>Cada processo abaixo mostra o <strong>estado atual</strong> (como funciona hoje) e o <strong>processo alvo</strong> (como deve funcionar). A distância entre os dois é o trabalho dos próximos 90 dias.</p>
-
-      <h2>Processo 1: Captação Local e Primeiro Contato</h2>
-
-      <h3>Estado atual</h3>
-      <ul>
-        <li><strong>Canais:</strong> boca a boca, indicação, Google básico, WhatsApp pessoal e Instagram estagnado</li>
-        <li><strong>Responsável:</strong> principalmente proprietário; Arthur deve ser ativado</li>
-        <li><strong>Ferramentas:</strong> Google Perfil, Instagram, WhatsApp pessoal, cavalete/fachada</li>
-        <li><strong>Gargalos:</strong> baixa conversão de porta, Google sem serviços, não aparece em "barbearia perto de mim", fachada pouco chamativa</li>
-      </ul>
-
-      <h3>Processo alvo</h3>
-      <ol>
-        <li>Cliente encontra a barbearia no Google, indicação, fachada ou Instagram</li>
-        <li>Cliente acessa WhatsApp comercial ou link de agendamento</li>
-        <li>Atendimento identifica origem, serviço desejado e preferência de horário</li>
-        <li>Cliente é registrado com origem e responsável</li>
-        <li>Atendimento agenda e confirma</li>
-      </ol>
-      <p><strong>Indicadores:</strong> novos clientes por origem, conversão de WhatsApp, cliques do Google, avaliações</p>
-
-      <h2>Processo 2: Agendamento</h2>
-
-      <h3>Estado atual</h3>
-      <ul>
-        <li><strong>Como agenda é criada:</strong> via WhatsApp, controle mental do dono</li>
-        <li><strong>Confirmação:</strong> não documentada</li>
-        <li><strong>Remarcação/no-show:</strong> faltas parecem baixas, mas sem número</li>
-        <li><strong>Gargalos:</strong> dados não ficam estruturados; histórico e origem se perdem</li>
-      </ul>
-
-      <h3>Processo alvo</h3>
-      <ol>
-        <li>Criar agendamento com cliente, telefone, origem, serviço, barbeiro, duração, horário e status</li>
-        <li>Enviar mensagem padrão de confirmação</li>
-        <li>Registrar chegada, realizado, cancelado, remarcado ou falta</li>
-        <li>Gerar comanda a partir do agendamento</li>
-        <li>Registrar pagamento e retorno esperado</li>
-      </ol>
-      <p><strong>Indicadores:</strong> ocupação, no-show, remarcação, atendimentos por barbeiro</p>
-
-      <h2>Processo 3: Atendimento Presencial e Experiência</h2>
-
-      <h3>Estado atual</h3>
-      <ul>
-        <li><strong>Recepção:</strong> atendimento bom, mas sem ritual documentado</li>
-        <li><strong>Execução:</strong> corte/barba fortes, com boa conversa e ambiente</li>
-        <li><strong>Diferenciais:</strong> bebida, finalização, toalha quente, consultoria — de forma sutil</li>
-        <li><strong>Gargalos:</strong> experiência depende do jeito do dono e não está treinada</li>
-      </ul>
-
-      <h3>Processo alvo</h3>
-      <ol>
-        <li>Receber cliente pelo nome e confirmar serviço</li>
-        <li>Fazer consulta rápida de corte/barba/preferência</li>
-        <li>Executar serviço com padrão técnico</li>
-        <li>Oferecer experiência: bebida/café, toalha quente, finalização e recomendação</li>
-        <li>Registrar produto usado ou recomendado</li>
-        <li>Pedir avaliação/feedback no fechamento</li>
-        <li>Definir retorno sugerido</li>
-      </ol>
-      <p><strong>Indicadores:</strong> avaliação, retorno, venda de produto, ticket médio</p>
-
-      <h2>Processo 4: Relacionamento e Retorno</h2>
-
-      <h3>Estado atual</h3>
-      <ul>
-        <li><strong>Registro:</strong> agenda/sistema antigo/WhatsApp</li>
-        <li><strong>Lembretes:</strong> não estruturados</li>
-        <li><strong>Reativação:</strong> inexistente</li>
-        <li><strong>Fidelidade:</strong> forte nos clientes antigos; fraca em novos</li>
-      </ul>
-
-      <h3>Processo alvo</h3>
-      <ol>
-        <li>Registrar cliente novo com origem e barbeiro responsável</li>
-        <li>Registrar último serviço e preferência</li>
-        <li>Definir retorno esperado (2-3 semanas ou conforme perfil)</li>
-        <li>Enviar mensagem de retorno quando cliente ficar sumido</li>
-        <li>Separar clientes do dono, de Arthur e da barbearia</li>
-      </ol>
-      <p><strong>Indicadores:</strong> retorno de novos, clientes sumidos, recorrência por barbeiro</p>
-
-      <h2>Processo 5: Financeiro, Taxas e Comissão</h2>
-
-      <h3>Estado atual</h3>
-      <ul>
-        <li><strong>Receita:</strong> ~R$360/dia e ~R$1.850/semana declarados</li>
-        <li><strong>Pagamentos:</strong> máquina de cartão; Pix/dinheiro/cartão precisam detalhamento</li>
-        <li><strong>Comissões:</strong> existem, mas regra na cabeça do dono (60% / 50% repassado)</li>
-        <li><strong>Taxas:</strong> devem ser abatidas antes do cálculo de comissão</li>
-      </ul>
-
-      <h3>Processo alvo</h3>
-      <ol>
-        <li>Abrir caixa</li>
-        <li>Registrar comanda com serviço/produto</li>
-        <li>Registrar forma de pagamento e taxa aplicada</li>
-        <li>Calcular valor líquido</li>
-        <li>Calcular comissão conforme regra oficial</li>
-        <li>Fechar caixa diário/semanal</li>
-        <li>Gerar resumo por barbeiro, serviço, produto e modalidade</li>
-      </ol>
-      <p><strong>Indicadores:</strong> faturamento, ticket, comissão, taxa, líquido, tempo de fechamento</p>
-
-      <h2>Processo 6: Produtos, Estoque e Café</h2>
-
-      <h3>Estado atual</h3>
-      <ul>
-        <li><strong>Itens:</strong> energético, pomada, produtos importados/pós-barba; café especial discutido</li>
-        <li><strong>Reposição:</strong> não documentada</li>
-        <li><strong>Consumo:</strong> não documentado</li>
-        <li><strong>Gargalos:</strong> oportunidade comercial sem inventário, custo, preço e giro</li>
-      </ul>
-
-      <h3>Processo alvo</h3>
-      <ol>
-        <li>Listar produtos e insumos</li>
-        <li>Registrar custo, preço, margem e estoque atual</li>
-        <li>Separar produto usado no atendimento de produto vendido</li>
-        <li>Definir recomendação de produto no fim do atendimento</li>
-        <li>Testar café como experiência/oferta somente depois da base operacional</li>
-      </ol>
-      <p><strong>Indicadores:</strong> margem, giro, ruptura, venda por atendimento</p>
-
-      <h2>Matriz de Automação Candidata</h2>
-      <div class="table-wrapper">
-        <table>
-          <thead><tr><th>Processo</th><th>Dor</th><th>Automação candidata</th><th>Prioridade</th></tr></thead>
-          <tbody>
-            <tr><td>Google/avaliações</td><td>Baixa captação local</td><td>Checklist e rotina de avaliação</td><td>Alta</td></tr>
-            <tr><td>Agenda</td><td>Dados se perdem no WhatsApp</td><td>Agenda/CRM simples</td><td>Alta</td></tr>
-            <tr><td>Retorno</td><td>Cliente novo não acompanhado</td><td>Alertas de cliente sumido</td><td>Alta</td></tr>
-            <tr><td>Financeiro</td><td>Comissão/taxa manual</td><td>Calculadora de líquido e repasse</td><td>Alta</td></tr>
-            <tr><td>WhatsApp</td><td>Canal pessoal sem padrão</td><td>Scripts e etiquetas</td><td>Média</td></tr>
-            <tr><td>Conteúdo</td><td>Instagram parado</td><td>Calendário e banco de criativos</td><td>Média</td></tr>
-            <tr><td>Produtos</td><td>Margem não gerida</td><td>Inventário e margem</td><td>Média</td></tr>
-          </tbody>
-        </table>
-      </div>
-
+    <div class="intro">
+      <p>Ot&aacute;vio, aqui est&atilde;o os 6 processos mapeados da sua barbearia &mdash; cada um com o estado atual e o alvo que vamos construir juntos. A ideia &eacute; sair do controle mental para um sistema simples e replic&aacute;vel.</p>
     </div>
-    <footer class="hub-footer">
-      <span>Barbearia Antunes Nogueira</span> · Central de Entregáveis · 2026
-    </footer>
-  </div>
+
+    <!-- Processo 1 -->
+    <div class="process-section">
+      <div class="process-header">
+        <span class="process-badge">1</span>
+        <span class="process-title">Capta&ccedil;&atilde;o Local e Primeiro Contato</span>
+      </div>
+      <div class="state-block">
+        <span class="state-label state-atual">Estado Atual</span>
+        <ul>
+          <li>Canais: boca a boca, indica&ccedil;&atilde;o, Google b&aacute;sico, WhatsApp pessoal, Instagram estagnado</li>
+          <li>Gargalos: baixa convers&atilde;o de porta, Google sem servi&ccedil;os, n&atilde;o aparece para &ldquo;barbearia perto de mim&rdquo;</li>
+        </ul>
+      </div>
+      <div class="state-block">
+        <span class="state-label state-alvo">Processo Alvo</span>
+        <ol>
+          <li>Cliente encontra no Google, indica&ccedil;&atilde;o, fachada ou Instagram</li>
+          <li>Acessa WhatsApp comercial ou link de agendamento</li>
+          <li>Atendimento identifica origem, servi&ccedil;o e prefer&ecirc;ncia de hor&aacute;rio</li>
+          <li>Cliente registrado com origem e respons&aacute;vel</li>
+          <li>Atendimento agenda e confirma</li>
+        </ol>
+      </div>
+      <div class="indicadores">
+        <strong>Indicadores:</strong> novos clientes por origem, convers&atilde;o de WhatsApp, cliques do Google, avalia&ccedil;&otilde;es
+      </div>
+    </div>
+
+    <!-- Processo 2 -->
+    <div class="process-section">
+      <div class="process-header">
+        <span class="process-badge">2</span>
+        <span class="process-title">Agendamento</span>
+      </div>
+      <div class="state-block">
+        <span class="state-label state-atual">Estado Atual</span>
+        <ul>
+          <li>Via WhatsApp, controle mental do dono</li>
+          <li>Confirma&ccedil;&atilde;o n&atilde;o documentada; dados n&atilde;o ficam estruturados</li>
+        </ul>
+      </div>
+      <div class="state-block">
+        <span class="state-label state-alvo">Processo Alvo</span>
+        <ol>
+          <li>Criar agendamento: cliente, telefone, origem, servi&ccedil;o, barbeiro, dura&ccedil;&atilde;o, hor&aacute;rio, status</li>
+          <li>Enviar confirma&ccedil;&atilde;o padr&atilde;o</li>
+          <li>Registrar: chegada, realizado, cancelado, remarcado ou falta</li>
+          <li>Gerar comanda a partir do agendamento</li>
+          <li>Registrar pagamento e retorno esperado</li>
+        </ol>
+      </div>
+      <div class="indicadores">
+        <strong>Indicadores:</strong> ocupa&ccedil;&atilde;o, no-show, remarca&ccedil;&atilde;o, atendimentos por barbeiro
+      </div>
+    </div>
+
+    <!-- Processo 3 -->
+    <div class="process-section">
+      <div class="process-header">
+        <span class="process-badge">3</span>
+        <span class="process-title">Atendimento Presencial e Experi&ecirc;ncia</span>
+      </div>
+      <div class="state-block">
+        <span class="state-label state-atual">Estado Atual</span>
+        <ul>
+          <li>Atendimento bom, mas sem ritual documentado</li>
+          <li>Diferenciais: bebida, finaliza&ccedil;&atilde;o, toalha, consultoria &mdash; depende do jeito do dono</li>
+        </ul>
+      </div>
+      <div class="state-block">
+        <span class="state-label state-alvo">Processo Alvo</span>
+        <ol>
+          <li>Receber cliente pelo nome e confirmar servi&ccedil;o</li>
+          <li>Consulta r&aacute;pida de corte/barba/prefer&ecirc;ncia</li>
+          <li>Executar servi&ccedil;o com padr&atilde;o t&eacute;cnico</li>
+          <li>Oferecer experi&ecirc;ncia: caf&eacute;, toalha quente, finaliza&ccedil;&atilde;o, recomenda&ccedil;&atilde;o</li>
+          <li>Registrar produto usado ou recomendado</li>
+          <li>Pedir avalia&ccedil;&atilde;o/feedback</li>
+          <li>Definir retorno sugerido</li>
+        </ol>
+      </div>
+      <div class="indicadores">
+        <strong>Indicadores:</strong> avalia&ccedil;&atilde;o, retorno, venda de produto, ticket m&eacute;dio
+      </div>
+    </div>
+
+    <!-- Processo 4 -->
+    <div class="process-section">
+      <div class="process-header">
+        <span class="process-badge">4</span>
+        <span class="process-title">Relacionamento e Retorno</span>
+      </div>
+      <div class="state-block">
+        <span class="state-label state-atual">Estado Atual</span>
+        <ul>
+          <li>Lembretes n&atilde;o estruturados; reativa&ccedil;&atilde;o inexistente</li>
+          <li>Fidelidade forte nos clientes antigos, fraca em novos</li>
+        </ul>
+      </div>
+      <div class="state-block">
+        <span class="state-label state-alvo">Processo Alvo</span>
+        <ol>
+          <li>Registrar cliente novo com origem e barbeiro</li>
+          <li>Registrar &uacute;ltimo servi&ccedil;o e prefer&ecirc;ncia</li>
+          <li>Definir retorno esperado (2-3 semanas)</li>
+          <li>Enviar mensagem quando cliente ficar sumido</li>
+          <li>Separar clientes do dono, Arthur e compartilhados</li>
+        </ol>
+      </div>
+      <div class="indicadores">
+        <strong>Indicadores:</strong> retorno de novos, clientes sumidos, recorr&ecirc;ncia por barbeiro
+      </div>
+    </div>
+
+    <!-- Processo 5 -->
+    <div class="process-section">
+      <div class="process-header">
+        <span class="process-badge">5</span>
+        <span class="process-title">Financeiro, Taxas e Comiss&atilde;o</span>
+      </div>
+      <div class="state-block">
+        <span class="state-label state-atual">Estado Atual</span>
+        <ul>
+          <li>Receita: ~R$360/dia, ~R$1.850/semana</li>
+          <li>Comiss&atilde;o na cabe&ccedil;a do dono; regra n&atilde;o documentada</li>
+        </ul>
+      </div>
+      <div class="state-block">
+        <span class="state-label state-alvo">Processo Alvo</span>
+        <ol>
+          <li>Abrir caixa</li>
+          <li>Registrar comanda (servi&ccedil;o/produto)</li>
+          <li>Registrar forma de pagamento e taxa</li>
+          <li>Calcular valor l&iacute;quido</li>
+          <li>Calcular comiss&atilde;o conforme regra oficial</li>
+          <li>Fechar caixa di&aacute;rio/semanal</li>
+          <li>Gerar resumo por barbeiro, servi&ccedil;o, produto e modalidade</li>
+        </ol>
+      </div>
+      <div class="indicadores">
+        <strong>Indicadores:</strong> faturamento, ticket, comiss&atilde;o, taxa, l&iacute;quido, tempo de fechamento
+      </div>
+    </div>
+
+    <!-- Processo 6 -->
+    <div class="process-section">
+      <div class="process-header">
+        <span class="process-badge">6</span>
+        <span class="process-title">Produtos, Estoque e Caf&eacute;</span>
+      </div>
+      <div class="state-block">
+        <span class="state-label state-atual">Estado Atual</span>
+        <ul>
+          <li>Produtos: energ&eacute;tico, pomada, importados/p&oacute;s-barba; caf&eacute; discutido</li>
+          <li>Sem invent&aacute;rio, sem custo/pre&ccedil;o/giro documentados</li>
+        </ul>
+      </div>
+      <div class="state-block">
+        <span class="state-label state-alvo">Processo Alvo</span>
+        <ol>
+          <li>Listar produtos e insumos</li>
+          <li>Registrar custo, pre&ccedil;o, margem e estoque</li>
+          <li>Separar produto usado no atendimento de produto vendido</li>
+          <li>Definir recomenda&ccedil;&atilde;o no fim do atendimento</li>
+          <li>Testar caf&eacute; como experi&ecirc;ncia ap&oacute;s base operacional</li>
+        </ol>
+      </div>
+      <div class="indicadores">
+        <strong>Indicadores:</strong> margem, giro, ruptura, venda por atendimento
+      </div>
+    </div>
+
+    <!-- Matriz de Automacao -->
+    <h2>Matriz de Automa&ccedil;&atilde;o Candidata</h2>
+
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Processo</th>
+            <th>Dor</th>
+            <th>Automa&ccedil;&atilde;o Candidata</th>
+            <th>Risco</th>
+            <th>Prioridade</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Google/avalia&ccedil;&otilde;es</td>
+            <td>Baixa capta&ccedil;&atilde;o local</td>
+            <td>Checklist e rotina de avalia&ccedil;&atilde;o</td>
+            <td>Baixo</td>
+            <td>Alta</td>
+          </tr>
+          <tr>
+            <td>Agenda</td>
+            <td>Dados se perdem no WhatsApp</td>
+            <td>Agenda/CRM simples</td>
+            <td>M&eacute;dio</td>
+            <td>Alta</td>
+          </tr>
+          <tr>
+            <td>Retorno</td>
+            <td>Cliente novo n&atilde;o &eacute; acompanhado</td>
+            <td>Alertas de cliente sumido</td>
+            <td>M&eacute;dio</td>
+            <td>Alta</td>
+          </tr>
+          <tr>
+            <td>Financeiro</td>
+            <td>Comiss&atilde;o/taxa manual</td>
+            <td>Calculadora de l&iacute;quido e repasse</td>
+            <td>Alto</td>
+            <td>Alta</td>
+          </tr>
+          <tr>
+            <td>WhatsApp</td>
+            <td>Canal pessoal sem padr&atilde;o</td>
+            <td>Scripts e etiquetas</td>
+            <td>Baixo</td>
+            <td>M&eacute;dia</td>
+          </tr>
+          <tr>
+            <td>Conte&uacute;do</td>
+            <td>Instagram parado</td>
+            <td>Calend&aacute;rio e banco de criativos</td>
+            <td>M&eacute;dio</td>
+            <td>M&eacute;dia</td>
+          </tr>
+          <tr>
+            <td>Produtos</td>
+            <td>Margem n&atilde;o gerida</td>
+            <td>Invent&aacute;rio e margem</td>
+            <td>M&eacute;dio</td>
+            <td>M&eacute;dia</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+
+  <footer class="footer">
+    Consultoria Estrat&eacute;gica &mdash; Barbearia Antunes Nogueira &copy; 2026
+  </footer>
 </body>
 </html>

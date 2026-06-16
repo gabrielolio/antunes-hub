@@ -1,92 +1,417 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>KPIs e Metas | Antunes Nogueira</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KPIs e Métricas — Barbearia Antunes Nogueira</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #ffffff;
+            color: #1a1a1a;
+            line-height: 1.6;
+        }
+
+        header {
+            background: #00291b;
+            padding: 1rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        header img {
+            max-height: 50px;
+            width: auto;
+        }
+
+        header nav a {
+            color: #c3a76c;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: opacity 0.2s;
+        }
+
+        header nav a:hover {
+            opacity: 0.8;
+        }
+
+        main {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem 4rem;
+        }
+
+        h1 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #00291b;
+            margin-bottom: 0.25rem;
+        }
+
+        .subtitle {
+            font-size: 0.95rem;
+            color: #666;
+            margin-bottom: 2rem;
+        }
+
+        .intro {
+            font-size: 1rem;
+            color: #333;
+            margin-bottom: 2.5rem;
+            line-height: 1.7;
+        }
+
+        h2 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #00291b;
+            margin: 2.5rem 0 1rem;
+            padding-left: 0.75rem;
+            border-left: 4px solid #c3a76c;
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+            border: 1px solid #e5e5e5;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.875rem;
+            min-width: 600px;
+        }
+
+        thead th {
+            background: #c3a76c;
+            color: #00291b;
+            font-weight: 600;
+            text-align: left;
+            padding: 0.75rem 1rem;
+            white-space: nowrap;
+        }
+
+        tbody td {
+            padding: 0.65rem 1rem;
+            border-bottom: 1px solid #f0f0f0;
+            vertical-align: top;
+        }
+
+        tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        tbody tr:hover {
+            background: #fafaf7;
+        }
+
+        .table-clean thead th {
+            background: #00291b;
+            color: #ffffff;
+        }
+
+        .callout {
+            background: #fdf9f0;
+            border: 1px solid #c3a76c;
+            border-left: 4px solid #c3a76c;
+            border-radius: 6px;
+            padding: 1.25rem 1.5rem;
+            margin-top: 2.5rem;
+        }
+
+        .callout h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #00291b;
+            margin-bottom: 0.75rem;
+        }
+
+        .callout ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .callout ul li {
+            position: relative;
+            padding-left: 1.25rem;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            color: #333;
+        }
+
+        .callout ul li::before {
+            content: "\2022";
+            color: #c3a76c;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem 1.5rem;
+            font-size: 0.8rem;
+            color: #999;
+            border-top: 1px solid #eee;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.4rem;
+            }
+
+            h2 {
+                font-size: 1.1rem;
+            }
+
+            main {
+                padding: 1.5rem 1rem 3rem;
+            }
+
+            table {
+                font-size: 0.8rem;
+            }
+
+            thead th, tbody td {
+                padding: 0.5rem 0.6rem;
+            }
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
-    <header class="page-header">
-      <a href="index.html" class="back-link">← Voltar ao hub</a>
-      <h1>KPIs e Metas</h1>
-      <p class="subtitle">Baseline revisado em 2026-06-09 · Fonte: nota manual + entrevista</p>
+    <header>
+        <img src="../brand/ANTUNES NOGUEIRA/LOGO/PNG/ANTUNES-NOGUEIRA_COMPLETA-1.png" alt="Antunes Nogueira Logo">
+        <nav><a href="index.html">&larr; Voltar ao Hub</a></nav>
     </header>
 
-    <div class="page-content">
+    <main>
+        <h1>KPIs e Métricas</h1>
+        <p class="subtitle">Linha de base | Revisado em 2026-06-09</p>
 
-      <h2>Linha de Base — 12 Indicadores</h2>
-      <p>Otávio, esses são os KPIs que importam agora. A coluna "Valor Atual" mostra o que foi declarado na entrevista. A meta de 30 dias é de <strong>coleta confiável</strong>, não de resultado agressivo. Primeiro a gente mede, depois a gente melhora.</p>
+        <p class="intro">Otávio, estes são os indicadores que vamos acompanhar mês a mês. O primeiro ciclo prioriza coleta confiável — sem dados bons, não há como definir metas realistas.</p>
 
-      <div class="table-wrapper">
-        <table>
-          <thead>
-            <tr><th>ID</th><th>Indicador</th><th>Valor Atual</th><th>Meta 30 dias</th><th>Dono</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>KPI-001</td><td>Faturamento mensal</td><td>~R$360/dia, ~R$1.850/semana</td><td>Definir baseline mensal</td><td>Otávio</td></tr>
-            <tr><td>KPI-002</td><td>Ticket médio</td><td>~R$ 75</td><td>Confirmar por fechamento real</td><td>Otávio</td></tr>
-            <tr><td>KPI-003</td><td>Ocupação da agenda</td><td>~6 atendimentos/dia (8h-19h)</td><td>Medir por 4 semanas</td><td>Otávio</td></tr>
-            <tr><td>KPI-004</td><td>No-show</td><td>Baixo, sem número</td><td>Medir número semanal</td><td>Otávio</td></tr>
-            <tr><td>KPI-005</td><td>Retorno de clientes novos</td><td>~3 novos/semana, 1-2 retornam</td><td>Medir retorno por cliente</td><td>Consultoria</td></tr>
-            <tr><td>KPI-006</td><td>Novos clientes</td><td>~3 por semana</td><td>Registrar origem</td><td>Consultoria</td></tr>
-            <tr><td>KPI-007</td><td>Produtividade por barbeiro</td><td>Otávio atende mais; Arthur em ativação</td><td>Medir separado por barbeiro</td><td>Otávio</td></tr>
-            <tr><td>KPI-008</td><td>Margem de produtos</td><td>Boas margens, sem lista formal</td><td>Criar inventário</td><td>Otávio</td></tr>
-            <tr><td>KPI-009</td><td>Prova social</td><td>15 avaliações, nota 5.0</td><td>Criar ritual de pedido</td><td>Equipe</td></tr>
-            <tr><td>KPI-010</td><td>WhatsApp profissional</td><td>Número pessoal, sem padrão</td><td>Criar scripts e etiquetas</td><td>Consultoria</td></tr>
-            <tr><td>KPI-011</td><td>Google Perfil</td><td>Básico; serviços não cadastrados</td><td>Completar checklist</td><td>Consultoria</td></tr>
-            <tr><td>KPI-012</td><td>Conteúdo local</td><td>Instagram estagnado</td><td>Calendário mínimo</td><td>Arthur</td></tr>
-          </tbody>
-        </table>
-      </div>
+        <h2>Linha de Base</h2>
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Indicador</th>
+                        <th>Definição</th>
+                        <th>Valor atual</th>
+                        <th>Meta 30 dias</th>
+                        <th>Meta 90 dias</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>KPI-001</td>
+                        <td>Faturamento mensal</td>
+                        <td>Receita bruta mensal</td>
+                        <td>~R$360/dia, ~R$1.850/semana</td>
+                        <td>Definir baseline mensal</td>
+                        <td>TBD</td>
+                    </tr>
+                    <tr>
+                        <td>KPI-002</td>
+                        <td>Ticket médio</td>
+                        <td>Receita / atendimentos</td>
+                        <td>~R$75</td>
+                        <td>Confirmar por fechamento real</td>
+                        <td>TBD</td>
+                    </tr>
+                    <tr>
+                        <td>KPI-003</td>
+                        <td>Ocupação da agenda</td>
+                        <td>Horas atendidas / disponíveis</td>
+                        <td>6 atendimentos/dia; 8h-19h</td>
+                        <td>Medir por 4 semanas</td>
+                        <td>TBD</td>
+                    </tr>
+                    <tr>
+                        <td>KPI-004</td>
+                        <td>No-show</td>
+                        <td>Faltas / agendamentos</td>
+                        <td>Baixo, sem número</td>
+                        <td>Medir número semanal</td>
+                        <td>TBD</td>
+                    </tr>
+                    <tr>
+                        <td>KPI-005</td>
+                        <td>Retorno de clientes novos</td>
+                        <td>Novos que retornam / novos</td>
+                        <td>~3 novos/semana; ~1-2 retornam</td>
+                        <td>Medir retorno por cliente</td>
+                        <td>Aumentar retorno</td>
+                    </tr>
+                    <tr>
+                        <td>KPI-006</td>
+                        <td>Novos clientes</td>
+                        <td>Novos por semana e origem</td>
+                        <td>~3 por semana</td>
+                        <td>Registrar origem</td>
+                        <td>Aumentar com Google/local</td>
+                    </tr>
+                    <tr>
+                        <td>KPI-007</td>
+                        <td>Produtividade por barbeiro</td>
+                        <td>Atendimentos, receita e recorrência</td>
+                        <td>Dono atende mais; Arthur em ativação</td>
+                        <td>Medir separado por barbeiro</td>
+                        <td>Aumentar recorrência Arthur</td>
+                    </tr>
+                    <tr>
+                        <td>KPI-008</td>
+                        <td>Margem de produtos</td>
+                        <td>Preço - custo por produto</td>
+                        <td>Margens boas, sem lista</td>
+                        <td>Criar inventário</td>
+                        <td>Definir ofertas ativas</td>
+                    </tr>
+                    <tr>
+                        <td>KPI-009</td>
+                        <td>Prova social</td>
+                        <td>Avaliações, nota, depoimentos</td>
+                        <td>15 avaliações, 5 estrelas</td>
+                        <td>Criar ritual de pedido</td>
+                        <td>Aumentar volume</td>
+                    </tr>
+                    <tr>
+                        <td>KPI-010</td>
+                        <td>WhatsApp profissional</td>
+                        <td>Tempo de resposta, conversão</td>
+                        <td>Número pessoal, sem padrão</td>
+                        <td>Criar scripts e etiquetas</td>
+                        <td>Medir conversão</td>
+                    </tr>
+                    <tr>
+                        <td>KPI-011</td>
+                        <td>Google Perfil</td>
+                        <td>Serviços, fotos, posts, avaliações</td>
+                        <td>Perfil básico incompleto</td>
+                        <td>Completar checklist</td>
+                        <td>Medir cliques/ligações</td>
+                    </tr>
+                    <tr>
+                        <td>KPI-012</td>
+                        <td>Conteúdo local</td>
+                        <td>Posts publicados e leads gerados</td>
+                        <td>Instagram estagnado</td>
+                        <td>Calendário mínimo</td>
+                        <td>Medir posts que geram cliente</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
-      <h2>Dados Numéricos Confirmados</h2>
-      <div class="table-wrapper">
-        <table>
-          <thead><tr><th>Dado</th><th>Valor</th><th>Observação</th></tr></thead>
-          <tbody>
-            <tr><td>Ticket médio</td><td>R$ 75</td><td>Declarado na entrevista</td></tr>
-            <tr><td>Atendimentos médios</td><td>6/dia</td><td>Declarado</td></tr>
-            <tr><td>Faturamento diário</td><td>~R$ 360</td><td>Declarado</td></tr>
-            <tr><td>Faturamento semanal</td><td>~R$ 1.850</td><td>Declarado</td></tr>
-            <tr><td>Novos clientes</td><td>~3/semana</td><td>Declarado</td></tr>
-            <tr><td>Retorno de novos</td><td>~1 a 2</td><td>Declarado</td></tr>
-            <tr><td>Horário de funcionamento</td><td>8h-19h</td><td>Declarado</td></tr>
-            <tr><td>Horário forte</td><td>Almoço e 17h-18h</td><td>Declarado</td></tr>
-            <tr><td>Horário fraco</td><td>14h-15h</td><td>Declarado</td></tr>
-            <tr><td>Duração de serviço</td><td>30-45 min</td><td>Declarado</td></tr>
-            <tr><td>Avaliações Google</td><td>15 avaliações, 5 estrelas</td><td>Declarado</td></tr>
-            <tr><td>Comissão Arthur</td><td>60% (dele) / 50% (repassado)</td><td>Precisa confirmação oficial</td></tr>
-            <tr><td>Taxa de cartão</td><td>~3,25% a 5%</td><td>Precisa confirmação por modalidade</td></tr>
-          </tbody>
-        </table>
-      </div>
+        <h2>Dados Numéricos Confirmados</h2>
+        <div class="table-wrapper">
+            <table class="table-clean">
+                <thead>
+                    <tr>
+                        <th>Dado</th>
+                        <th>Valor</th>
+                        <th>Observação</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Ticket médio</td>
+                        <td>R$75</td>
+                        <td>Declarado</td>
+                    </tr>
+                    <tr>
+                        <td>Atendimentos médios</td>
+                        <td>6/dia</td>
+                        <td>Declarado</td>
+                    </tr>
+                    <tr>
+                        <td>Faturamento diário</td>
+                        <td>~R$360</td>
+                        <td>Declarado</td>
+                    </tr>
+                    <tr>
+                        <td>Faturamento semanal</td>
+                        <td>~R$1.850</td>
+                        <td>Declarado</td>
+                    </tr>
+                    <tr>
+                        <td>Novos clientes</td>
+                        <td>~3/semana</td>
+                        <td>Declarado</td>
+                    </tr>
+                    <tr>
+                        <td>Retorno de novos</td>
+                        <td>~1 a 2</td>
+                        <td>Declarado</td>
+                    </tr>
+                    <tr>
+                        <td>Horário de funcionamento</td>
+                        <td>8h-19h</td>
+                        <td>Declarado</td>
+                    </tr>
+                    <tr>
+                        <td>Horário forte</td>
+                        <td>Almoço e 17h-18h</td>
+                        <td>Declarado</td>
+                    </tr>
+                    <tr>
+                        <td>Horário fraco</td>
+                        <td>14h-15h</td>
+                        <td>Declarado</td>
+                    </tr>
+                    <tr>
+                        <td>Duração de serviço</td>
+                        <td>30-45 min</td>
+                        <td>Declarado</td>
+                    </tr>
+                    <tr>
+                        <td>Avaliações Google</td>
+                        <td>15 avaliações, 5 estrelas</td>
+                        <td>Declarado</td>
+                    </tr>
+                    <tr>
+                        <td>Comissão</td>
+                        <td>60% / 50% para repassado</td>
+                        <td>Precisa confirmação</td>
+                    </tr>
+                    <tr>
+                        <td>Taxa de cartão</td>
+                        <td>1,6% débito / 5% crédito</td>
+                        <td>Precisa confirmação</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
-      <h2>Regras de Uso</h2>
-      <ul>
-        <li>KPI sem método de coleta não vira critério de sucesso</li>
-        <li>Meta sem baseline fica como TBD</li>
-        <li>Números que envolvem dinheiro/comissão precisam confirmação humana</li>
-        <li>O primeiro mês deve priorizar <strong>coleta confiável</strong>, não metas agressivas</li>
-      </ul>
+        <div class="callout">
+            <h3>Regras de Uso</h3>
+            <ul>
+                <li>KPI sem método de coleta não vira critério de sucesso</li>
+                <li>Meta sem baseline fica "TBD"</li>
+                <li>Números financeiros da transcrição precisam confirmação humana</li>
+                <li>O primeiro mês deve priorizar coleta confiável, não metas agressivas</li>
+            </ul>
+        </div>
+    </main>
 
-      <h2>O Que o Otávio Precisa Fazer</h2>
-      <div class="highlight-box">
-        <h4>Ações imediatas para validar o baseline</h4>
-        <ol>
-          <li><strong>Confirmar ticket médio:</strong> somar receita de 1 semana ÷ número de atendimentos</li>
-          <li><strong>Confirmar taxa de cartão:</strong> verificar extrato da maquininha por modalidade</li>
-          <li><strong>Confirmar regra de comissão:</strong> documentar por escrito o combinado com Arthur</li>
-          <li><strong>Registrar origem dos clientes novos por 2 semanas:</strong> "como você conheceu a barbearia?"</li>
-          <li><strong>Verificar Google Perfil:</strong> entrar e confirmar se serviços estão cadastrados</li>
-        </ol>
-      </div>
-
-    </div>
-    <footer class="hub-footer">
-      <span>Barbearia Antunes Nogueira</span> · Central de Entregáveis · 2026
+    <footer>
+        Consultoria Estratégica — Barbearia Antunes Nogueira &copy; 2026
     </footer>
-  </div>
 </body>
 </html>

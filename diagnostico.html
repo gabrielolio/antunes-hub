@@ -3,142 +3,419 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Diagnóstico Operacional | Antunes Nogueira</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Diagn&#243;stico Operacional | Antunes Nogueira</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #ffffff;
+      color: #1a1a1a;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    .site-header {
+      background: #00291b;
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .site-header img { max-height: 50px; width: auto; }
+    .site-header a.nav-link {
+      color: #c3a76c;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: opacity 0.2s;
+    }
+    .site-header a.nav-link:hover { opacity: 0.8; }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+    }
+    h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #00291b;
+      margin-bottom: 8px;
+    }
+    .subtitle {
+      font-size: 0.95rem;
+      color: #555;
+      margin-bottom: 40px;
+    }
+    h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #00291b;
+      margin-top: 48px;
+      margin-bottom: 20px;
+      padding-bottom: 8px;
+      border-bottom: 3px solid #c3a76c;
+    }
+    p { margin-bottom: 16px; }
+    strong { font-weight: 600; }
+    .exec-summary {
+      background: #f8f7f4;
+      border-left: 4px solid #c3a76c;
+      padding: 24px 28px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 40px;
+    }
+    .exec-summary p:last-child { margin-bottom: 0; }
+    .area-card {
+      background: #ffffff;
+      border: 1px solid #e8e5df;
+      border-radius: 8px;
+      padding: 24px;
+      margin-bottom: 16px;
+      transition: box-shadow 0.2s;
+    }
+    .area-card:hover { box-shadow: 0 4px 12px rgba(0, 41, 27, 0.08); }
+    .area-number {
+      display: inline-block;
+      background: #00291b;
+      color: #c3a76c;
+      font-weight: 700;
+      font-size: 0.8rem;
+      width: 28px;
+      height: 28px;
+      line-height: 28px;
+      text-align: center;
+      border-radius: 50%;
+      margin-right: 12px;
+      vertical-align: middle;
+    }
+    .area-title {
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: #00291b;
+      vertical-align: middle;
+    }
+    .area-body {
+      margin-top: 12px;
+      font-size: 0.93rem;
+      color: #333;
+    }
+    .area-body .label {
+      font-weight: 600;
+      color: #00291b;
+    }
+    .table-wrapper {
+      overflow-x: auto;
+      margin: 24px 0;
+      border-radius: 8px;
+      border: 1px solid #e8e5df;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+      min-width: 700px;
+    }
+    thead { background: #00291b; color: #ffffff; }
+    thead th {
+      padding: 12px 14px;
+      text-align: left;
+      font-weight: 600;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+    tbody tr { border-bottom: 1px solid #f0ede8; }
+    tbody tr:last-child { border-bottom: none; }
+    tbody tr:nth-child(even) { background: #faf9f7; }
+    tbody td { padding: 10px 14px; vertical-align: top; }
+    .priority-alta { color: #b8420e; font-weight: 600; }
+    .priority-media { color: #8a6d1b; font-weight: 600; }
+    .status-validar {
+      background: #fef3cd;
+      color: #856404;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+    .site-footer {
+      text-align: center;
+      padding: 32px 24px;
+      font-size: 0.85rem;
+      color: #777;
+      border-top: 1px solid #e8e5df;
+      margin-top: 64px;
+    }
+    @media (max-width: 600px) {
+      .site-header { padding: 12px 16px; }
+      .site-header img { max-height: 36px; }
+      .container { padding: 32px 16px 60px; }
+      h1 { font-size: 1.5rem; }
+      h2 { font-size: 1.15rem; }
+      .area-card { padding: 16px; }
+      .exec-summary { padding: 16px 20px; }
+    }
+  </style>
 </head>
 <body>
+  <header class="site-header">
+    <img src="../brand/ANTUNES NOGUEIRA/LOGO/PNG/ANTUNES-NOGUEIRA_COMPLETA-1.png" alt="Antunes Nogueira">
+    <a href="index.html" class="nav-link">&#8592; Voltar ao Hub</a>
+  </header>
+
   <div class="container">
-    <header class="page-header">
-      <a href="index.html" class="back-link">← Voltar ao hub</a>
-      <h1>Diagnóstico Operacional</h1>
-      <p class="subtitle">Revisado em 2026-06-09 · Fonte: entrevista com Otávio</p>
-    </header>
+    <h1>Diagn&#243;stico Operacional</h1>
+    <p class="subtitle">An&#225;lise completa &#8212; Barbearia Antunes Nogueira</p>
 
-    <div class="page-content">
-
-      <h2>Sumário Executivo</h2>
-      <blockquote>
-        A Barbearia Antunes Nogueira não está sem valor — ela está sem sistema de crescimento. A operação tem boa entrega técnica, clientes fiéis, ambiente que ajuda a percepção de valor e margem em serviços/produtos. O problema central é que a captação, a fidelização, a agenda, a comissão, o WhatsApp, a presença local e a rotina de conteúdo ainda dependem demais do proprietário e de controle informal.
-      </blockquote>
-      <p>O primeiro ciclo da consultoria deve <strong>organizar a casa antes de tentar escalar</strong> com tráfego pago ou sistema complexo. A ordem correta é: diagnóstico fechado, quick wins locais, padronização operacional, rotina comercial, depois produto/sistema interno.</p>
-
-      <h2>Diagnóstico por Área</h2>
-
-      <h3>1. Gestão e dependência do proprietário</h3>
-      <ul>
-        <li><strong>Estado atual:</strong> clientes e operação ainda giram em torno do dono. Arthur entrou para somar, mas precisa de recorrência própria e orientação.</li>
-        <li><strong>Evidências:</strong> EVD-003, EVD-004, EVD-029</li>
-        <li><strong>Deficiência:</strong> a barbearia precisa virar marca e operação, não apenas agenda pessoal do proprietário.</li>
-        <li><strong>Impacto:</strong> crescimento trava quando o dono está sobrecarregado.</li>
-        <li><strong>Tratamento:</strong> playbook operacional, metas por profissional, agenda por barbeiro, CRM e rotina semanal de acompanhamento.</li>
-      </ul>
-
-      <h3>2. Captação local e Google</h3>
-      <ul>
-        <li><strong>Estado atual:</strong> Google existe, tem 15 avaliações 5 estrelas e link público, mas não aparece para "barbearia perto de mim"; serviços não estão cadastrados; avaliações não são respondidas.</li>
-        <li><strong>Evidências:</strong> EVD-019, EVD-020, EVD-021</li>
-        <li><strong>Deficiência:</strong> presença local subaproveitada.</li>
-        <li><strong>Impacto:</strong> perda de clientes da região e de clientes de porta.</li>
-        <li><strong>Tratamento:</strong> otimizar Google Perfil antes de mídia paga: serviços, fotos, fachada, descrição, categoria, posts, rotina de avaliações e respostas.</li>
-      </ul>
-
-      <h3>3. Cliente, recorrência e CRM</h3>
-      <ul>
-        <li><strong>Estado atual:</strong> há clientes de longa data e recorrentes; novos clientes surgem em torno de 3/semana, mas só 1 a 2 retornam. Contatos são salvos sem relacionamento estruturado.</li>
-        <li><strong>Evidências:</strong> EVD-001, EVD-006, EVD-012</li>
-        <li><strong>Deficiência:</strong> cliente novo não entra em rotina de retorno.</li>
-        <li><strong>Impacto:</strong> barbearia perde recorrência que poderia ser capturada com follow-up simples.</li>
-        <li><strong>Tratamento:</strong> cadastro de cliente, data do último atendimento, barbeiro, serviço, preferência, retorno esperado e alerta de cliente sumido.</li>
-      </ul>
-
-      <h3>4. Agenda e atendimento</h3>
-      <ul>
-        <li><strong>Estado atual:</strong> agendamento pelo WhatsApp, controle mental do dono. 8h-19h, média de 6 atendimentos/dia, horários fortes no almoço e 17h-18h, fraco 14h-15h.</li>
-        <li><strong>Evidências:</strong> EVD-009, EVD-013, EVD-014</li>
-        <li><strong>Deficiência:</strong> agenda funciona, mas não gera dados, histórico e visão por barbeiro.</li>
-        <li><strong>Impacto:</strong> dificuldade de medir ocupação, origem, retorno e produtividade.</li>
-        <li><strong>Tratamento:</strong> agenda simples com status, cliente, serviço, barbeiro, forma de pagamento e origem.</li>
-      </ul>
-
-      <h3>5. Financeiro, taxas e comissão</h3>
-      <ul>
-        <li><strong>Estado atual:</strong> faturamento ~R$360/dia e ~R$1.850/semana; ticket médio R$75; comissão 60% citada, cliente repassado a 50%, comissão sobre líquido após taxa.</li>
-        <li><strong>Evidências:</strong> EVD-008, EVD-015, EVD-016, EVD-017, EVD-018</li>
-        <li><strong>Deficiência:</strong> regra financeira não está documentada e depende de cálculo manual.</li>
-        <li><strong>Impacto:</strong> risco de erro em repasse, conflito e baixa clareza de margem.</li>
-        <li><strong>Tratamento:</strong> política escrita de comissão, tabela de taxas por modalidade, fechamento diário/semanal e relatório por profissional.</li>
-      </ul>
-
-      <h3>6. Marketing, Instagram e prova social</h3>
-      <ul>
-        <li><strong>Estado atual:</strong> Instagram parado/estagnado; existem fotos e cortes para usar; não há depoimentos gravados; Arthur tem interesse em edição e roteiro.</li>
-        <li><strong>Evidências:</strong> EVD-022, EVD-023, EVD-024</li>
-        <li><strong>Deficiência:</strong> falta rotina, direção, narrativa e responsável.</li>
-        <li><strong>Impacto:</strong> presença digital não transforma qualidade real em autoridade.</li>
-        <li><strong>Tratamento:</strong> calendário simples, banco de fotos/vídeos, antes/depois, bastidores, prova social e conteúdo de autoridade local.</li>
-      </ul>
-
-      <h3>7. WhatsApp comercial</h3>
-      <ul>
-        <li><strong>Estado atual:</strong> WhatsApp é pessoal do dono; respostas não são padronizadas; há desejo de número dedicado.</li>
-        <li><strong>Evidências:</strong> EVD-025</li>
-        <li><strong>Deficiência:</strong> canal mistura vida pessoal e atendimento comercial.</li>
-        <li><strong>Impacto:</strong> percepção menos profissional, gargalo no dono e perda de histórico.</li>
-        <li><strong>Tratamento:</strong> número/fluxo comercial, mensagens padrão, etiquetas/origem, horário de resposta e link público.</li>
-      </ul>
-
-      <h3>8. Percepção de valor, atendimento e experiência</h3>
-      <ul>
-        <li><strong>Estado atual:</strong> cliente entende o valor; ambiente ajuda; atendimento converte quando cliente está em loja; há elementos como bebida, finalização, toalha quente e consultoria.</li>
-        <li><strong>Evidências:</strong> EVD-027, EVD-028</li>
-        <li><strong>Deficiência:</strong> experiência existe, mas não está documentada como ritual replicável.</li>
-        <li><strong>Impacto:</strong> qualidade fica dependente do jeito do dono.</li>
-        <li><strong>Tratamento:</strong> ritual de atendimento do primeiro contato ao pós-corte, com pontos de valor claros e pedido de avaliação.</li>
-      </ul>
-
-      <h3>9. Produtos e café</h3>
-      <ul>
-        <li><strong>Estado atual:</strong> produtos possuem margem; pomadas importadas e pós-barba como oportunidade. Café especial discutido como experiência e receita complementar.</li>
-        <li><strong>Evidências:</strong> EVD-031, EVD-032</li>
-        <li><strong>Deficiência:</strong> oportunidade comercial sem estrutura de estoque, oferta e rotina.</li>
-        <li><strong>Impacto:</strong> pode aumentar ticket, mas também distrair se vier antes da base operacional.</li>
-        <li><strong>Tratamento:</strong> mapear produtos primeiro; café fica como experimento controlado depois dos quick wins.</li>
-      </ul>
-
-      <h2>Matriz de Deficiências</h2>
-      <div class="table-wrapper">
-        <table>
-          <thead>
-            <tr><th>ID</th><th>Área</th><th>Deficiência</th><th>Prioridade</th><th>Tratamento</th><th>Status</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>FIND-001</td><td>Gestão</td><td>Dependência excessiva do proprietário</td><td>Alta</td><td>Playbooks, metas e rotina por profissional</td><td>Validar</td></tr>
-            <tr><td>FIND-002</td><td>Captação local</td><td>Baixa conversão de cliente de porta</td><td>Alta</td><td>Google, fachada, prova social e chamadas locais</td><td>Validar</td></tr>
-            <tr><td>FIND-003</td><td>CRM</td><td>Relacionamento fraco com novos clientes</td><td>Alta</td><td>Cadastro, histórico e alertas de retorno</td><td>Validar</td></tr>
-            <tr><td>FIND-004</td><td>Agenda</td><td>Agenda sem dados estruturados</td><td>Alta</td><td>Agenda por barbeiro com status e origem</td><td>Validar</td></tr>
-            <tr><td>FIND-005</td><td>Financeiro</td><td>Comissão, taxas e fechamento não documentados</td><td>Alta</td><td>Política financeira e fechamento simples</td><td>Validar</td></tr>
-            <tr><td>FIND-006</td><td>Google/SEO</td><td>Google Perfil incompleto para captação local</td><td>Alta</td><td>Otimização e rotina de avaliações</td><td>Validar</td></tr>
-            <tr><td>FIND-007</td><td>WhatsApp</td><td>Canal pessoal e sem padronização</td><td>Média</td><td>WhatsApp comercial e scripts</td><td>Validar</td></tr>
-            <tr><td>FIND-008</td><td>Conteúdo</td><td>Instagram parado e sem rotina</td><td>Média</td><td>Calendário e banco de criativos</td><td>Validar</td></tr>
-            <tr><td>FIND-009</td><td>Experiência</td><td>Ritual de atendimento não documentado</td><td>Média</td><td>Playbook de experiência</td><td>Validar</td></tr>
-            <tr><td>FIND-010</td><td>Produtos</td><td>Produtos/café sem estratégia operacional definida</td><td>Média</td><td>Mapa de estoque, margem e oferta</td><td>Validar</td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <h2>Próximos Passos</h2>
-      <p>Otávio, cada FIND acima precisa da sua validação. O processo é simples:</p>
-      <ol>
-        <li>Leia o finding e a deficiência</li>
-        <li>Responda: "sim, é isso" ou "não, na verdade..."</li>
-        <li>Se tiver dados novos (números, contexto), adicione</li>
-      </ol>
-      <p>Depois da validação, priorizamos o tratamento e começamos pelos quick wins.</p>
-
+    <h2>Sum&#225;rio Executivo</h2>
+    <div class="exec-summary">
+      <p>A Barbearia Antunes Nogueira n&#227;o est&#225; sem valor; ela est&#225; sem sistema de crescimento. A opera&#231;&#227;o tem boa entrega t&#233;cnica, clientes fi&#233;is, ambiente que ajuda a percep&#231;&#227;o de valor e margem em servi&#231;os/produtos. O problema central &#233; que a capta&#231;&#227;o, a fideliza&#231;&#227;o, a agenda, a comiss&#227;o, o WhatsApp, a presen&#231;a local e a rotina de conte&#250;do ainda dependem demais do propriet&#225;rio e de controle informal.</p>
+      <p>O primeiro ciclo da consultoria deve organizar a casa antes de tentar escalar com tr&#225;fego pago ou sistema complexo. A ordem correta &#233;: diagn&#243;stico fechado, quick wins locais, padroniza&#231;&#227;o operacional, rotina comercial, depois produto/sistema interno.</p>
     </div>
-    <footer class="hub-footer">
-      <span>Barbearia Antunes Nogueira</span> · Central de Entregáveis · 2026
-    </footer>
+
+    <h2>Diagn&#243;stico por &#193;rea</h2>
+
+    <div class="area-card">
+      <span class="area-number">1</span>
+      <span class="area-title">Gest&#227;o e depend&#234;ncia do propriet&#225;rio</span>
+      <div class="area-body">
+        <p><span class="label">Estado atual:</span> Clientes e opera&#231;&#227;o giram em torno do dono. Arthur entrou para somar, mas precisa de recorr&#234;ncia pr&#243;pria.</p>
+        <p><span class="label">Defici&#234;ncia:</span> Barbearia precisa virar marca e opera&#231;&#227;o, n&#227;o agenda pessoal.</p>
+        <p><span class="label">Tratamento:</span> Playbook operacional, metas por profissional, CRM e rotina semanal.</p>
+      </div>
+    </div>
+
+    <div class="area-card">
+      <span class="area-number">2</span>
+      <span class="area-title">Capta&#231;&#227;o local e Google</span>
+      <div class="area-body">
+        <p><span class="label">Estado atual:</span> Google com 15 avalia&#231;&#245;es 5 estrelas mas n&#227;o aparece para &#8220;barbearia perto de mim&#8221;; servi&#231;os n&#227;o cadastrados.</p>
+        <p><span class="label">Tratamento:</span> Otimizar Google Perfil antes de m&#237;dia paga.</p>
+      </div>
+    </div>
+
+    <div class="area-card">
+      <span class="area-number">3</span>
+      <span class="area-title">Cliente, recorr&#234;ncia e CRM</span>
+      <div class="area-body">
+        <p><span class="label">Estado atual:</span> ~3 novos/semana, s&#243; 1-2 retornam. Contatos salvos sem relacionamento estruturado.</p>
+        <p><span class="label">Tratamento:</span> Cadastro de cliente, data do &#250;ltimo atendimento, alerta de cliente sumido.</p>
+      </div>
+    </div>
+
+    <div class="area-card">
+      <span class="area-number">4</span>
+      <span class="area-title">Agenda e atendimento</span>
+      <div class="area-body">
+        <p><span class="label">Estado atual:</span> Agendamento pelo WhatsApp, controle mental do dono. 8h-19h, 6 atendimentos/dia.</p>
+        <p><span class="label">Tratamento:</span> Agenda simples com status, cliente, servi&#231;o, barbeiro, pagamento e origem.</p>
+      </div>
+    </div>
+
+    <div class="area-card">
+      <span class="area-number">5</span>
+      <span class="area-title">Financeiro, taxas e comiss&#227;o</span>
+      <div class="area-body">
+        <p><span class="label">Estado atual:</span> Faturamento ~R$360/dia, R$1.850/semana; ticket R$75; comiss&#227;o na cabe&#231;a do dono.</p>
+        <p><span class="label">Tratamento:</span> Pol&#237;tica escrita de comiss&#227;o, tabela de taxas, fechamento di&#225;rio/semanal.</p>
+      </div>
+    </div>
+
+    <div class="area-card">
+      <span class="area-number">6</span>
+      <span class="area-title">Marketing, Instagram e prova social</span>
+      <div class="area-body">
+        <p><span class="label">Estado atual:</span> Instagram parado; existem fotos.</p>
+        <p><span class="label">Tratamento:</span> Calend&#225;rio simples, banco de fotos/v&#237;deos, antes/depois, bastidores.</p>
+      </div>
+    </div>
+
+    <div class="area-card">
+      <span class="area-number">7</span>
+      <span class="area-title">WhatsApp comercial</span>
+      <div class="area-body">
+        <p><span class="label">Estado atual:</span> N&#250;mero pessoal do dono.</p>
+        <p><span class="label">Tratamento:</span> N&#250;mero comercial, mensagens padr&#227;o, etiquetas/origem.</p>
+      </div>
+    </div>
+
+    <div class="area-card">
+      <span class="area-number">8</span>
+      <span class="area-title">Percep&#231;&#227;o de valor e experi&#234;ncia</span>
+      <div class="area-body">
+        <p><span class="label">Estado atual:</span> Cliente entende valor; ambiente ajuda; caf&#233;, finaliza&#231;&#227;o, toalha quente.</p>
+        <p><span class="label">Tratamento:</span> Ritual de atendimento documentado como replic&#225;vel.</p>
+      </div>
+    </div>
+
+    <div class="area-card">
+      <span class="area-number">9</span>
+      <span class="area-title">Produtos e caf&#233;</span>
+      <div class="area-body">
+        <p><span class="label">Estado atual:</span> Produtos com margem; caf&#233; como experi&#234;ncia.</p>
+        <p><span class="label">Tratamento:</span> Mapear produtos primeiro; caf&#233; como experimento controlado depois.</p>
+      </div>
+    </div>
+
+    <h2>Matriz de Defici&#234;ncias</h2>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>&#193;rea</th>
+            <th>Defici&#234;ncia</th>
+            <th>Prioridade</th>
+            <th>Tratamento</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>FIND-001</td>
+            <td>Gest&#227;o</td>
+            <td>Depend&#234;ncia excessiva do propriet&#225;rio</td>
+            <td><span class="priority-alta">Alta</span></td>
+            <td>Playbooks, metas e rotina por profissional</td>
+            <td><span class="status-validar">Validar</span></td>
+          </tr>
+          <tr>
+            <td>FIND-002</td>
+            <td>Capta&#231;&#227;o local</td>
+            <td>Baixa convers&#227;o de cliente de porta</td>
+            <td><span class="priority-alta">Alta</span></td>
+            <td>Google, fachada, prova social</td>
+            <td><span class="status-validar">Validar</span></td>
+          </tr>
+          <tr>
+            <td>FIND-003</td>
+            <td>CRM</td>
+            <td>Relacionamento fraco com novos clientes</td>
+            <td><span class="priority-alta">Alta</span></td>
+            <td>Cadastro, hist&#243;rico e alertas de retorno</td>
+            <td><span class="status-validar">Validar</span></td>
+          </tr>
+          <tr>
+            <td>FIND-004</td>
+            <td>Agenda</td>
+            <td>Agenda sem dados estruturados</td>
+            <td><span class="priority-alta">Alta</span></td>
+            <td>Agenda por barbeiro com status e origem</td>
+            <td><span class="status-validar">Validar</span></td>
+          </tr>
+          <tr>
+            <td>FIND-005</td>
+            <td>Financeiro</td>
+            <td>Comiss&#227;o, taxas e fechamento n&#227;o documentados</td>
+            <td><span class="priority-alta">Alta</span></td>
+            <td>Pol&#237;tica financeira e fechamento simples</td>
+            <td><span class="status-validar">Validar</span></td>
+          </tr>
+          <tr>
+            <td>FIND-006</td>
+            <td>Google/SEO</td>
+            <td>Google Perfil incompleto para capta&#231;&#227;o local</td>
+            <td><span class="priority-alta">Alta</span></td>
+            <td>Otimiza&#231;&#227;o e rotina de avalia&#231;&#245;es</td>
+            <td><span class="status-validar">Validar</span></td>
+          </tr>
+          <tr>
+            <td>FIND-007</td>
+            <td>WhatsApp</td>
+            <td>Canal pessoal e sem padroniza&#231;&#227;o</td>
+            <td><span class="priority-media">M&#233;dia</span></td>
+            <td>WhatsApp comercial e scripts</td>
+            <td><span class="status-validar">Validar</span></td>
+          </tr>
+          <tr>
+            <td>FIND-008</td>
+            <td>Conte&#250;do</td>
+            <td>Instagram parado e sem rotina</td>
+            <td><span class="priority-media">M&#233;dia</span></td>
+            <td>Calend&#225;rio e banco de criativos</td>
+            <td><span class="status-validar">Validar</span></td>
+          </tr>
+          <tr>
+            <td>FIND-009</td>
+            <td>Experi&#234;ncia</td>
+            <td>Ritual de atendimento n&#227;o documentado</td>
+            <td><span class="priority-media">M&#233;dia</span></td>
+            <td>Playbook de experi&#234;ncia</td>
+            <td><span class="status-validar">Validar</span></td>
+          </tr>
+          <tr>
+            <td>FIND-010</td>
+            <td>Produtos</td>
+            <td>Produtos/caf&#233; sem estrat&#233;gia operacional</td>
+            <td><span class="priority-media">M&#233;dia</span></td>
+            <td>Mapa de estoque, margem e oferta</td>
+            <td><span class="status-validar">Validar</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>Prioriza&#231;&#227;o Inicial</h2>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Ordem</th>
+            <th>Frente</th>
+            <th>Por que agora</th>
+            <th>Entrega m&#237;nima</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Google Perfil + avalia&#231;&#245;es</td>
+            <td>Alta chance de capta&#231;&#227;o local com baixo custo</td>
+            <td>Checklist Google, servi&#231;os cadastrados, fotos, rotina de avalia&#231;&#227;o</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Agenda/CRM manual simples</td>
+            <td>Gera dados antes de desenvolver sistema</td>
+            <td>Planilha ou schema inicial</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Financeiro/comiss&#227;o</td>
+            <td>Evita erro e prepara gest&#227;o com Arthur</td>
+            <td>Regra escrita de taxas e repasse</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>WhatsApp comercial</td>
+            <td>Remove gargalo do dono</td>
+            <td>Scripts e fluxo de atendimento</td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>Conte&#250;do local</td>
+            <td>Usa material que j&#225; existe</td>
+            <td>Calend&#225;rio de 30 dias</td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td>Produtos/caf&#233;</td>
+            <td>Pode aumentar ticket</td>
+            <td>Invent&#225;rio, margem e teste controlado</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
+
+  <footer class="site-footer">
+    Consultoria Estrat&#233;gica &#8212; Barbearia Antunes Nogueira &#169; 2026
+  </footer>
 </body>
 </html>
